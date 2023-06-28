@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="App.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#7375AB">
+    <meta property="og:image" content="https://i.imgur.com/rHVFRvd.png">
+    <meta property="twitter:image" content="https://i.imgur.com/rHVFRvd.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:url" content="https://kalmix.me">
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="I'm Kalmix and this is my personal website. I'm a multi-disciplinary designer and developer with a passion for user experience, interaction design and problem solving."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -15,6 +21,33 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      /* Hide Scrollbar and Scroll Functionality */
+      body.preloader-site {
+        overflow: hidden;
+      }
+
+      /* Make the preloader take the whole screen and send it to the top layer */
+      .preloader-wrapper {
+        height: 100%;
+        width: 100%;
+        background: #121212;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999999;
+      }
+
+      /* Center preloader and set preloader size */
+      .preloader-wrapper .preloader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        
+      }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,11 +57,33 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Kalmix - Porfolio</title>
   </head>
   <body>
+        <div class="preloader-wrapper">
+      <div class="preloader">
+        
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      //declare body class and add preloader-site class
+      $(document).ready(function ($) {
+        var Body = $("body");
+        Body.addClass("preloader-site");
+      });
+
+      $(window).load(function () {
+        setTimeout(function () {
+          $(".preloader-wrapper").fadeOut(300, function () {
+            $("body").removeClass("preloader-site");
+          });
+        }, 100);
+      });
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root" class="!bg-black"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
